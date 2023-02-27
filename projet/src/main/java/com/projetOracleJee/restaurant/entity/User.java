@@ -3,6 +3,7 @@ package com.projetOracleJee.restaurant.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -28,4 +29,8 @@ public class User {
             referencedColumnName = "addressId"
     )
     private Address address;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Commande> commandes;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Reservation> reservations ;
 }
